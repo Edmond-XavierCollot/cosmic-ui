@@ -1,6 +1,6 @@
 {
   "name": "cosmic-ui",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "description": "logical components for react",
   "main": "build/index.js",
   "license": "MIT",
