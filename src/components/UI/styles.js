@@ -1,3 +1,4 @@
+import { parseSpacingValue } from "../../utils";
 import { UI_PROPS, SPACING_PROPS_NATIVE_LIST } from "./props";
 
 const spacingNativeHandlers = SPACING_PROPS_NATIVE_LIST.reduce(
@@ -28,12 +29,6 @@ const spacingHandlers = {
     paddingTop: value,
     paddingBottom: value,
   }),
-  [UI_PROPS.ALIGN]: (value) => ({
-    alignItems: value,
-  }),
-  [UI_PROPS.JUSTIFY]: (value) => ({
-    justifyContent: value,
-  }),
 };
 
 const othersHandlers = {
@@ -45,42 +40,21 @@ const othersHandlers = {
   }),
 };
 
-const stylesHandlers = {
-  ...spacingHandlers,
-  ...othersHandlers,
-};
+const wrappedHandlers = Object.entries(spacingHandlers).reduce(
+  (acc, [name, handler]) => ({
+    ...acc,
+    [name]: (value) => handler(parseSpacingValue(value)),
+  }),
+  {}
+);
 
-export const buildStylesTools = (spacing) => {
-  const getSpacingValue = (value) => {
-    if (typeof value === "string") {
-      if (Object.keys(spacing).includes(value)) {
-        return spacing[value];
-      }
-    }
-    return value;
-  };
+const handlers = { ...wrappedHandlers, ...othersHandlers };
 
-  const wrappedHandlers = Object.entries(spacingHandlers).reduce(
-    (acc, [name, handler]) => ({
+export const generateStyles = (props, htmlStyle) =>
+  Object.entries(props).reduce(
+    (acc, [prop, value]) => ({
       ...acc,
-      [name]: (value) => handler(getSpacingValue(value)),
-    })
+      ...handlers[prop](value),
+    }),
+    { ...htmlStyle }
   );
-
-  const handlers = spacing
-    ? { ...wrappedHandlers, ...othersHandlers }
-    : stylesHandlers;
-
-  const generateStyles = (props, htmlStyle) =>
-    Object.entries(props).reduce(
-      (acc, [prop, value]) => ({
-        ...acc,
-        ...handlers[prop](value),
-      }),
-      { ...htmlStyle }
-    );
-
-  return {
-    generateStyles,
-  };
-};

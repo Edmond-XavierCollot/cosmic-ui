@@ -1,7 +1,8 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import UI from "./index";
-import { buildStylesTools } from "./styles";
+import { generateStyles } from "./styles";
+import { updateConfig } from "../../config";
 
 describe("UI", () => {
   test("Render without props", () => {
@@ -70,12 +71,14 @@ describe("UI", () => {
       m: 20,
       l: 30,
     };
-    const { generateStyles } = buildStylesTools();
-    const { generateStyles: generateStylesSpacing } = buildStylesTools(spacing);
 
     const styles = generateStyles({ padding: 20 }, {});
-    const stylesSpacing = generateStylesSpacing({ padding: "m" }, {});
+    const stylesSpacing = generateStyles({ padding: "m" }, {});
     expect(styles.padding).toBe(20);
-    expect(stylesSpacing.padding).toBe(20);
+    expect(stylesSpacing.padding).toBe(16);
+    updateConfig({ spacing });
+
+    const updatedStyles = generateStyles({ padding: "m" }, {});
+    expect(updatedStyles.padding).toBe(20);
   });
 });

@@ -1,6 +1,6 @@
 import React from "react";
 import UI from "../UI";
-// import { parseSpacingValue } from '@utils';
+import { parseSpacingValue } from "../../utils";
 
 const hasExtraBottomMargin = (elems, buffer, startIndex, globalSize) => {
   const array = React.Children.toArray(elems);
@@ -18,8 +18,7 @@ const hasExtraBottomMargin = (elems, buffer, startIndex, globalSize) => {
 };
 
 const Grid = ({ children, gap = 0, globalSize, ...otherProps }) => {
-  // const gapValue = parseSpacingValue(gap);
-  const gapValue = gap;
+  const gapValue = parseSpacingValue(gap);
   // Buffer of the total size of the current row
   let buffer = 0;
 
