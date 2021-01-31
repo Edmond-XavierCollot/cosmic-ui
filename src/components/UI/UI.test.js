@@ -1,6 +1,7 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import UI from "./index";
+import { buildStylesTools } from "./styles";
 
 describe("UI", () => {
   test("Render without props", () => {
@@ -62,5 +63,19 @@ describe("UI", () => {
     render(<UI width={100}>coucou</UI>);
     const ui = screen.getByText("coucou");
     expect(ui.style.width).toBe("100px");
+  });
+  test("buildStylesTools", () => {
+    const spacing = {
+      s: 10,
+      m: 20,
+      l: 30,
+    };
+    const { generateStyles } = buildStylesTools();
+    const { generateStyles: generateStylesSpacing } = buildStylesTools(spacing);
+
+    const styles = generateStyles({ padding: 20 }, {});
+    const stylesSpacing = generateStylesSpacing({ padding: "m" }, {});
+    expect(styles.padding).toBe(20);
+    expect(stylesSpacing.padding).toBe(20);
   });
 });
