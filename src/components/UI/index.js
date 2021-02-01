@@ -1,7 +1,5 @@
-import React from "react";
-import { css, cx } from "@emotion/css";
 import { STYLE_PROPS_LIST } from "./props";
-import { divideProps } from "../../utils";
+import { divideProps } from "@utils";
 import { generateStyles } from "./styles";
 
 const styles = {

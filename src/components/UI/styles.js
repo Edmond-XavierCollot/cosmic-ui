@@ -1,4 +1,4 @@
-import { parseSpacingValue } from "../../utils";
+import { parseSpacingValue } from "@utils";
 import { UI_PROPS, SPACING_PROPS_NATIVE_LIST } from "./props";
 
 const spacingNativeHandlers = SPACING_PROPS_NATIVE_LIST.reduce(

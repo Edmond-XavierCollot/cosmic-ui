@@ -1,6 +1,5 @@
-import React from "react";
 import UI from "../UI";
-import { parseSpacingValue } from "../../utils";
+import { parseSpacingValue } from "@utils";
 
 const hasExtraBottomMargin = (elems, buffer, startIndex, globalSize) => {
   const array = React.Children.toArray(elems);
