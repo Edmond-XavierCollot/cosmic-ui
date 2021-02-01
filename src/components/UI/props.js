@@ -17,13 +17,18 @@ export const SPACING_PROPS = {
   PADDING_HORIZONTAL: "paddingH",
   PADDING_VERTICAL: "paddingV",
 };
+export const STYLE_PROPS = {
+  ALIGN: "align",
+  JUSTIFY: "justify",
+  ...SPACING_PROPS,
+};
 
 export const UI_PROPS = {
   ...SPACING_PROPS,
-  ALIGN: "align",
-  JUSTIFY: "justify",
+  ...STYLE_PROPS,
 };
 
 export const SPACING_PROPS_NATIVE_LIST = Object.values(SPACING_PROPS_NATIVE);
 export const SPACING_PROPS_LIST = Object.values(SPACING_PROPS);
 export const UI_PROPS_LIST = Object.values(UI_PROPS);
+export const STYLE_PROPS_LIST = Object.values(STYLE_PROPS);

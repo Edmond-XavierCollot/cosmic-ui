@@ -20,7 +20,7 @@ module.exports = {
   externals: {
     react: "react",
     reactDOM: "react-dom",
-    // "@emotion/core": "@emotion/core",
-    // "@emotion/css": "@emotion/css",
+    "@emotion/core": "@emotion/core",
+    "@emotion/css": "@emotion/css",
   },
 };

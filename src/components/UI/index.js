@@ -1,6 +1,6 @@
 import React from "react";
 import { css, cx } from "@emotion/css";
-import { SPACING_PROPS_LIST } from "./props";
+import { STYLE_PROPS_LIST } from "./props";
 import { divideProps } from "../../utils";
 import { generateStyles } from "./styles";
 
@@ -25,10 +25,10 @@ const UI = ({
   }
   const TAG = tag;
   const { spacing = {}, otherProps } = divideProps(props, {
-    spacing: SPACING_PROPS_LIST,
+    spacing: STYLE_PROPS_LIST,
   });
 
-  const htmlStyles = { ...generateStyles(spacing, style), width, height };
+  const htmlStyles = { ...generateStyles(spacing), width, height, ...style };
 
   return (
     <TAG

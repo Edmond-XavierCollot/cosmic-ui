@@ -65,7 +65,7 @@ describe("UI", () => {
     const ui = screen.getByText("coucou");
     expect(ui.style.width).toBe("100px");
   });
-  test("buildStylesTools", () => {
+  test("updateConfig", () => {
     const spacing = {
       s: 10,
       m: 20,
@@ -80,5 +80,15 @@ describe("UI", () => {
 
     const updatedStyles = generateStyles({ padding: "m" }, {});
     expect(updatedStyles.padding).toBe(20);
+  });
+  test("Align prop", () => {
+    render(<UI align="center">aligned</UI>);
+    const ui = screen.getByText("aligned");
+    expect(ui.style.alignItems).toEqual("center");
+  });
+  test("Align prop", () => {
+    render(<UI justify="center">justify</UI>);
+    const ui = screen.getByText("justify");
+    expect(ui.style.justifyContent).toEqual("center");
   });
 });

@@ -50,11 +50,11 @@ const wrappedHandlers = Object.entries(spacingHandlers).reduce(
 
 const handlers = { ...wrappedHandlers, ...othersHandlers };
 
-export const generateStyles = (props, htmlStyle) =>
+export const generateStyles = (props) =>
   Object.entries(props).reduce(
     (acc, [prop, value]) => ({
       ...acc,
       ...handlers[prop](value),
     }),
-    { ...htmlStyle }
+    {}
   );
