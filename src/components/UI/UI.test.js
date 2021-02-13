@@ -91,4 +91,17 @@ describe("UI", () => {
     const ui = screen.getByText("justify");
     expect(ui.style.justifyContent).toEqual("center");
   });
+  test("direction prop", () => {
+    render(<UI>default</UI>);
+    render(<UI direction="row">row</UI>);
+    render(<UI direction="column">column</UI>);
+
+    const defaultUI = screen.getByText("default");
+    const rowUI = screen.getByText("row");
+    const columnUI = screen.getByText("column");
+
+    expect(defaultUI).toHaveStyle({ flexDirection: "row" });
+    expect(rowUI).toHaveStyle({ flexDirection: "row" });
+    expect(columnUI).toHaveStyle({ flexDirection: "column" });
+  });
 });

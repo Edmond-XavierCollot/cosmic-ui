@@ -1,6 +1,6 @@
 {
   "name": "cosmic-ui",
-  "version": "1.1.9",
+  "version": "1.1.11",
   "description": "Basics spacing and positional components for react",
   "main": "build/index.js",
   "license": "MIT",

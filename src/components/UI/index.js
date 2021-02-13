@@ -6,6 +6,11 @@ const styles = {
   ui: css({
     display: "flex",
     boxSizing: "border-box",
+    flexWrap: "wrap",
+    flexDirection: "row",
+  }),
+  directionColumn: css({
+    flexDirection: "column",
   }),
 };
 
@@ -16,6 +21,7 @@ const UI = ({
   width,
   height,
   className,
+  direction,
   ...props
 }) => {
   if (typeof tag !== "string") {
@@ -31,7 +37,11 @@ const UI = ({
   return (
     <TAG
       style={htmlStyles}
-      className={cx(styles.ui, className)}
+      className={cx(
+        styles.ui,
+        { [styles.directionColumn]: direction === "column" },
+        className
+      )}
       {...otherProps}
     >
       {children}
