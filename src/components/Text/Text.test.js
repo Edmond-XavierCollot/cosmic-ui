@@ -13,7 +13,7 @@ describe("Text", () => {
     expect(text).toHaveStyle({ fontSize: "20px" });
   });
   test("weight prop", () => {
-    render(<Text bold>weight</Text>);
+    render(<Text bold size={20}>weight</Text>);
     const text = screen.getByText("weight");
     expect(text).toHaveStyle({ fontWeight: 700, display: "inline-flex" });
   });

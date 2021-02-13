@@ -19,8 +19,18 @@ module.exports = {
     ],
   },
   externals: {
-    react: "react",
-    reactDOM: "react-dom",
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React",
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM",
+    },
     "@emotion/core": "@emotion/core",
     "@emotion/css": "@emotion/css",
   },
@@ -31,7 +41,7 @@ module.exports = {
   },
   plugins: [
     new ProvidePlugin({
-      React: ["react", "default"],
+      React: "react",
       css: ["@emotion/css", "css"],
       cx: ["@emotion/css", "cx"],
     }),
