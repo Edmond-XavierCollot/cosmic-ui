@@ -16,8 +16,9 @@ const hasExtraBottomMargin = (elems, buffer, startIndex, globalSize) => {
   return false;
 };
 
-const Grid = ({ children, gap = 0, globalSize, ...otherProps }) => {
+const Grid = ({ children, gap = 0, rowGap = 0, globalSize, ...otherProps }) => {
   const gapValue = parseSpacingValue(gap);
+  const rowGapValue = parseSpacingValue(rowGap);
   // Buffer of the total size of the current row
   let buffer = 0;
 
@@ -44,7 +45,7 @@ const Grid = ({ children, gap = 0, globalSize, ...otherProps }) => {
               }),
             // If the element is not on the last row, it has a row gap
             ...(hasExtraBottomMargin(children, buffer, index, globalSize) && {
-              marginBottom: gapValue,
+              marginBottom: rowGapValue || gapValue,
             }),
             width: `calc((100% - ${
               numberOfPossibleGap * gapValue
